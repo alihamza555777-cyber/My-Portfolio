@@ -69,7 +69,7 @@ export default function Contact() {
                 </div>
                 <div className="link-text">
                   <span className="link-label">Location</span>
-                  <span className="link-value">Pakistan</span>
+                  <span className="link-value">Gujrat Punjab, Pakistan</span>
                 </div>
               </a>
 
