@@ -1,22 +1,14 @@
 import { useState, useEffect } from 'react';
 import SectionHeading from '../components/SectionHeading';
 import ProjectCard from '../components/ProjectCard';
-
-const API_BASE = 'http://localhost:3001';
+import projectsData from '../../server/projects.json';
 
 export default function Projects() {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [projects] = useState(projectsData);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/projects`)
-      .then((res) => res.json())
-      .then((data) => setProjects(data))
-      .catch(() => {
-        // Fallback to empty if server is down
-        setProjects([]);
-      })
-      .finally(() => setLoading(false));
+    // Data is now loaded statically from the JSON file
   }, []);
 
   return (
