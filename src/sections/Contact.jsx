@@ -15,10 +15,13 @@ export default function Contact() {
     e.preventDefault();
     setSubmitted(false);
 
+    // TODO: Replace 'YOUR_FORMSPREE_ID' with your actual ID from formspree.io
+    const FORMSPREE_ID = "YOUR_FORMSPREE_ID"; 
+
     try {
-      const res = await fetch('http://localhost:3001/api/contact', {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
 
@@ -27,10 +30,15 @@ export default function Contact() {
         setTimeout(() => setSubmitted(false), 4000);
         setFormData({ name: '', email: '', message: '' });
       } else {
-        alert('Failed to send message. Please try again.');
+        const data = await res.json();
+        if (Object.hasOwn(data, 'errors')) {
+          alert(data["errors"].map(error => error["message"]).join(", "));
+        } else {
+          alert('Failed to send message. Please ensure you have replaced YOUR_FORMSPREE_ID in the code.');
+        }
       }
     } catch {
-      alert('Network error. Is the backend running?');
+      alert('Network error. Please try again later.');
     }
   };
 
@@ -69,7 +77,7 @@ export default function Contact() {
                 </div>
                 <div className="link-text">
                   <span className="link-label">Location</span>
-                  <span className="link-value">Gujrat Punjab, Pakistan</span>
+                  <span className="link-value">Pakistan</span>
                 </div>
               </a>
 
