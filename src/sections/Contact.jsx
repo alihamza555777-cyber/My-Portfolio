@@ -15,8 +15,8 @@ export default function Contact() {
     e.preventDefault();
     setSubmitted(false);
 
-    // TODO: Replace 'YOUR_FORMSPREE_ID' with your actual ID from formspree.io
-    const FORMSPREE_ID = "YOUR_FORMSPREE_ID"; 
+    // Form ID from your Formspree account
+    const FORMSPREE_ID = "xjgjzpee"; 
 
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
