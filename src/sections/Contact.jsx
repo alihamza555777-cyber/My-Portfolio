@@ -151,6 +151,11 @@ export default function Contact() {
                 required
               ></textarea>
             </div>
+            {submitted && (
+              <div className="success-message">
+                Thanks! Your message has been sent successfully.
+              </div>
+            )}
             <button type="submit" className="btn btn-primary" id="contact-submit">
               <Send size={16} />
               {submitted ? 'Message Sent!' : 'Send Message'}
