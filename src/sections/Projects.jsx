@@ -8,6 +8,7 @@ export default function Projects() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    console.log('Projects Data Imported:', projectsData);
     if (Array.isArray(projectsData)) {
       setProjects(projectsData);
     } else if (projectsData && Array.isArray(projectsData.default)) {
